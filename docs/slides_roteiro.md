@@ -3,8 +3,12 @@
 **Unidade Curricular:** Fundamentos e Técnicas em Ciência de Dados  
 **Docente:** Prof. Dr. Josenalde Oliveira  
 **Curso:** Análise e Desenvolvimento de Sistemas (TADS) — EAJ / UFRN  
+**Grupo:** G1 — T7: Banco de Dados Baseado em Grafos (Neo4j & Cypher)  
+**Data da Apresentação:** Quarta-feira, 04/11/2026, às 07h50 (Abertura dos Seminários)  
 **Equipe:** Pedro Davi, Cleiton Mizael e Natanael Lucas  
 **Tempo Total Planejado:** 14 minutos e 00 segundos (reserva de 1 minuto para transições e encerramento)
+
+> **Nota Estratégica:** Em conformidade com a orientação do docente ("Evitem demonstrações ao vivo... Para demonstrações o ideal é exibir vídeo curto focado na funcionalidade"), a demonstração prática nos slides 07 e 08 baseia-se na exibição do vídeo demonstrativo gravado ou nos gráficos analíticos já processados em alta resolução.
 
 ---
 
