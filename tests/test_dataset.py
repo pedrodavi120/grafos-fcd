@@ -28,9 +28,10 @@ class TestDatasetIntegrity(unittest.TestCase):
         self.assertTrue((df["ch"] > 0).all())
         # Semestres entre 1 e 6
         self.assertTrue(df["semestre"].between(1, 6).all())
-        # Deve conter componentes obrigatórios essenciais
-        self.assertIn("TADS01", df["codigo"].values)
-        self.assertIn("TADS08", df["codigo"].values)
+        # Deve conter componentes obrigatorios essenciais com codigos oficiais
+        self.assertIn("TAD0102", df["codigo"].values)
+        self.assertIn("TAD0103", df["codigo"].values)
+        self.assertIn("TAD0204", df["codigo"].values)
 
     def test_processed_prerequisitos_referential_integrity(self):
         """Valida ausência de arestas órfãs e ausência de autorrelacionamento."""

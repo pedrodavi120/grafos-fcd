@@ -35,8 +35,8 @@ class TestGraphMetrics(unittest.TestCase):
         self.assertIn("in_degree", df.columns)
         self.assertIn("out_degree", df.columns)
 
-        # TADS01 (Algoritmos) deve ser um dos maiores provedores de pré-requisitos
-        row_tads01 = df[df["codigo"] == "TADS01"].iloc[0]
+        # TAD0102 (Algoritmos e Programacao) deve ser um dos maiores provedores de pre-requisitos
+        row_tads01 = df[df["codigo"] == "TAD0102"].iloc[0]
         self.assertGreaterEqual(row_tads01["out_degree"], 3)
 
     def test_critical_path_detection(self):
@@ -45,20 +45,20 @@ class TestGraphMetrics(unittest.TestCase):
         self.assertGreater(len(critical), 0)
         length, path = critical[0]
         self.assertGreaterEqual(length, 4)
-        self.assertEqual(path[0], "TADS01")  # O caminho mais longo parte de Algoritmos
+        self.assertEqual(path[0], "TAD0102")  # O caminho mais longo parte de Algoritmos
 
     def test_k_hop_traversal(self):
         """Valida a simulação de travessias de múltiplos saltos."""
-        successors = get_k_hop_successors(self.G, "TADS01", k=3)
+        successors = get_k_hop_successors(self.G, "TAD0102", k=3)
 
         self.assertIn(1, successors)
         self.assertIn(2, successors)
         self.assertIn(3, successors)
         # Algoritmos tem pré-requisitos diretos no salto 1
-        self.assertIn("TADS06", successors[1])
-        self.assertIn("TADS07", successors[1])
-        # No salto 2, deve alcançar Web I via POO ou Banco de Dados
-        self.assertIn("TADS11", successors[2])
+        self.assertIn("TAD0009", successors[1])
+        self.assertIn("TAD0020", successors[1])
+        # No salto 2, deve alcançar FCD via Banco de Dados ou Estruturas de Dados
+        self.assertIn("TAD0204", successors[2])
 
 
 if __name__ == "__main__":

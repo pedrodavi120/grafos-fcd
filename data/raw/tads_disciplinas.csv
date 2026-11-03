@@ -1,28 +1,40 @@
 codigo,nome,ch,semestre,natureza,area
-TADS01,Algoritmos e Logica de Programacao,90,1,Obrigatoria,Programacao
-TADS02,Introducao a Informatica,60,1,Obrigatoria,Fundamentos
-TADS03,Fundamentos Matematicos para Computacao,60,1,Obrigatoria,Matematica
-TADS04,Metodologia Cientifica e Tecnologica,60,1,Obrigatoria,Humanas
-TADS05,Fundamentos de Redes de Computadores,60,1,Obrigatoria,Infraestrutura
-TADS06,Estrutura de Dados,90,2,Obrigatoria,Programacao
-TADS07,Programacao Orientada a Objetos,90,2,Obrigatoria,Programacao
-TADS08,Bancos de Dados,60,2,Obrigatoria,Dados
-TADS09,Arquitetura e Organizacao de Computadores,60,2,Obrigatoria,Infraestrutura
-TADS10,Engenharia de Software,60,2,Obrigatoria,Engenharia
-TADS11,Desenvolvimento Web I,90,3,Obrigatoria,Desenvolvimento
-TADS12,Fundamentos e Tecnicas em Ciencia de Dados,60,3,Obrigatoria,Dados
-TADS13,Sistemas Operacionais,60,3,Obrigatoria,Infraestrutura
-TADS14,Interacao Humano-Computador,60,3,Obrigatoria,Engenharia
-TADS15,Probabilidade e Estatistica Aplicada,60,3,Obrigatoria,Matematica
-TADS16,Desenvolvimento Web II,90,4,Obrigatoria,Desenvolvimento
-TADS17,Teste e Qualidade de Software,60,4,Obrigatoria,Engenharia
-TADS18,Redes Sem Fio e Dispositivos Moveis,60,4,Obrigatoria,Infraestrutura
-TADS19,Seguranca e Auditoria de Sistemas,60,4,Obrigatoria,Seguranca
-TADS20,Gestao de Projetos de TI,60,4,Obrigatoria,Gestao
-TADS21,Desenvolvimento para Dispositivos Moveis,90,5,Obrigatoria,Desenvolvimento
-TADS22,Projeto Integrador I,60,5,Obrigatoria,Integracao
-TADS23,Topicos Avancados em Banco de Dados NoSQL,60,5,Optativa,Dados
-TADS24,Governanca e Etica em TI,60,5,Obrigatoria,Gestao
-TADS25,Projeto Integrador II,90,6,Obrigatoria,Integracao
-TADS26,Estagio Supervisionado,160,6,Obrigatoria,Pratica Profissional
-
+TAD0001,FUNDAMENTOS DA COMPUTACAO,60,1,Obrigatoria,Fundamentos
+TAD0006,SISTEMAS OPERACIONAIS,60,1,Obrigatoria,Infraestrutura
+TAD0102,ALGORITMOS E PROGRAMACAO,90,1,Obrigatoria,Programacao
+TAD0105,MATEMATICA APLICADA I,60,1,Obrigatoria,Matematica
+TAD0201,RACIOCINIO LOGICO,45,1,Obrigatoria,Matematica
+TAD0202,LEITURA E PRODUCAO DE TEXTOS,60,1,Obrigatoria,Humanas
+TAD0009,PROGRAMACAO ORIENTADA A OBJETOS,60,2,Obrigatoria,Programacao
+TAD0012,PROCESSO DE DESENVOLVIMENTO DE SOFTWARE,45,2,Obrigatoria,Engenharia
+TAD0013,MATEMATICA APLICADA II,60,2,Obrigatoria,Matematica
+TAD0016,VERTENTES PRODUTIVAS NAS CIENCIAS AGRARIAS,45,2,Obrigatoria,Humanas
+TAD0103,BANCO DE DADOS,60,2,Obrigatoria,Dados
+TAD0111,PROGRAMACAO VISUAL E AUTORIA WEB,60,2,Obrigatoria,Desenvolvimento
+TAD0114,REDES DE COMPUTADORES,60,2,Obrigatoria,Infraestrutura
+TAD0004,ANALISE E PROJETO ORIENTADO A OBJETOS,45,3,Obrigatoria,Engenharia
+TAD0019,PROGRAMACAO WEB,60,3,Obrigatoria,Desenvolvimento
+TAD0020,ESTRUTURAS DE DADOS,60,3,Obrigatoria,Programacao
+TAD0022,ESTATISTICA APLICADA,45,3,Obrigatoria,Matematica
+TAD0025,INTELIGENCIA COMPUTACIONAL,60,3,Obrigatoria,Inteligencia
+TAD0123,SISTEMAS DIGITAIS,45,3,Obrigatoria,Hardware
+TAD0203,GESTAO DE QUALIDADE DE SOFTWARE,45,3,Obrigatoria,Engenharia
+TAD0018,PROCESSAMENTO DIGITAL DE IMAGENS,60,4,Obrigatoria,Inteligencia
+TAD0027,PROGRAMACAO PARA DISPOSITIVOS MOVEIS,90,4,Obrigatoria,Desenvolvimento
+TAD0028,PLANEJAMENTO E GERENCIA DE PROJETOS,45,4,Obrigatoria,Gestao
+TAD0029,ARQUITETURA DE SOFTWARE,45,4,Obrigatoria,Engenharia
+TAD0030,MICROCONTROLADORES,60,4,Obrigatoria,Hardware
+TAD0032,METODOLOGIA DO TRABALHO CIENTIFICO,30,4,Obrigatoria,Metodologia
+TAD0204,FUNDAMENTOS E TECNICAS EM CIENCIA DE DADOS,60,4,Obrigatoria,Dados
+TAD0015,EMPREENDEDORISMO,45,5,Obrigatoria,Gestao
+TAD0108,CONTEXTO GEOGRAFICO REGIONAL,30,5,Obrigatoria,Humanas
+TAD0156,PROJETOS APLICADOS I,60,5,Obrigatoria,Integracao
+TAD0160,SISTEMAS DISTRIBUIDOS,30,5,Obrigatoria,Infraestrutura
+TAD0205,TRABALHO DE CONCLUSAO DE CURSO I,30,5,Obrigatoria,TCC
+TAD0035,LEGISLACAO E ETICA EM TI,45,6,Obrigatoria,Gestao
+TAD0140,TRABALHO DE CONCLUSAO DE CURSO II,60,6,Obrigatoria,TCC
+TAD0157,PROJETOS APLICADOS II,60,6,Obrigatoria,Integracao
+TAD0010,BANCO DE DADOS II,45,3,Optativa,Dados
+TAD0054,MINERACAO DE DADOS,60,5,Optativa,Dados
+TAD0065,APRENDIZADO DE MAQUINA,60,5,Optativa,Inteligencia
+TAD0069,TOPICOS ESPECIAIS EM CIENCIA DE DADOS,60,5,Optativa,Dados

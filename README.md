@@ -162,13 +162,13 @@ python src/visualization/plot_graph.py
 ## 7. Resultados Analíticos da Validação
 
 1. **Análise Explícita (Cypher):**
-   - A consulta direta de pré-requisitos para *Algoritmos e Lógica de Programação* (TADS01) foi processada em latência inferior a 3 milissegundos.
-   - A travessia de múltiplos saltos (`*1..3`) recuperou com precisão todas as disciplinas da cadeia formativa de desenvolvimento sem a necessidade de recursão manual.
+   - A consulta direta de pré-requisitos para *Algoritmos e Programação* (TAD0102) foi processada em latência inferior a 3 milissegundos.
+   - A travessia de múltiplos saltos (`*1..3`) recuperou com precisão todas as disciplinas da cadeia formativa de desenvolvimento e dados sem a necessidade de recursão manual.
 2. **Análise Implícita (NetworkX):**
-   - **Centralidade de Intermediação (*Betweenness Centrality*):** As disciplinas *Desenvolvimento Web I* (TADS11) e *Projeto Integrador I* (TADS22) apresentaram os maiores coeficientes da rede ($0.0167$), atuando como pontes estruturantes indispensáveis para o avanço dos períodos formativos.
-   - **Grau de Saída (*Out-Degree*):** *Algoritmos e Lógica de Programação* (TADS01) e *Bancos de Dados* (TADS08) são os maiores provedores de dependências, destravando diretamente 4 componentes cada.
-   - **Caminho Crítico de Formatura:** O caminho de maior extensão em saltos no DAG curricular abrange uma sequência ininterrupta de 5 períodos:
-     $$\text{Algoritmos} \rightarrow \text{POO} \rightarrow \text{Desenvolvimento Web I} \rightarrow \text{Desenvolvimento Web II} \rightarrow \text{Dispositivos Móveis}$$
+   - **Centralidade de Intermediação (*Betweenness Centrality*):** A própria disciplina ministrada pelo docente, *Fundamentos e Técnicas em Ciência de Dados* (TAD0204), desponta como o principal nó estruturante e gargalo de intermediação da rede ($0.0128$), seguida por *Estruturas de Dados* (TAD0020) e *Projetos Aplicados I* (TAD0156).
+   - **Grau de Saída (*Out-Degree*):** *Algoritmos e Programação* (TAD0102) lidera como a maior provedora de pré-requisitos do curso (4 dependências diretas), seguida por *Processo de Desenvolvimento de Software* (TAD0012) e *Fundamentos e Técnicas em Ciência de Dados* (TAD0204).
+   - **Caminho Crítico de Formatura:** O caminho de maior extensão em saltos no DAG curricular abrange uma sequência obrigatória de 5 períodos letivos:
+     $$\text{Algoritmos} \rightarrow \text{POO} \rightarrow \text{Análise e Projeto OO} \rightarrow \text{Arquitetura de Software} \rightarrow \text{Projetos Aplicados I} \rightarrow \text{Projetos Aplicados II}$$
 
 ---
 

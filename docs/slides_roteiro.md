@@ -96,9 +96,9 @@
 * **Título:** Métricas de Centralidade e Desempenho Computacional
 * **Elementos Visuais:** Gráficos analíticos gerados no projeto: ranking de *Betweenness Centrality*, dispersão de graus (entrada vs. saída) e visualização estratificada do DAG com o caminho crítico destacado.
 * **Pontos da Fala:**
-  - Grau de saída (*Out-Degree*): demonstração de *Algoritmos e Lógica de Programação* (TADS01) e *Bancos de Dados* (TADS08) como os principais provedores da base.
-  - Centralidade de Intermediação (*Betweenness*): demonstração matemática de que *Desenvolvimento Web I* e *Projeto Integrador I* são as disciplinas-gargalo da matriz curricular.
-  - Caminho Crítico de Formatura: cadeia contínua de 5 períodos letivos ininterruptos.
+  - Grau de saída (*Out-Degree*): demonstração de *Algoritmos e Programação* (TAD0102) como a maior provedora da base com 4 dependências diretas.
+  - Centralidade de Intermediação (*Betweenness*): demonstração matemática de que a própria disciplina da matéria, *Fundamentos e Técnicas em Ciência de Dados* (TAD0204), atua como o principal nó estruturante e articulador da formação acadêmica na matriz real de TADS/EAJ.
+  - Caminho Crítico de Formatura: cadeia contínua de 5 períodos letivos ininterruptos de Algoritmos até Projetos Aplicados II.
   - Desempenho computacional: execução das travessias em menos de 8 milissegundos localmente e 35 milissegundos via Neo4j AuraDB.
 
 #### Diapositivo 09: Conclusões e Entregas do Projeto (12:45 - 14:00)
