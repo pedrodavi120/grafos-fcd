@@ -10,6 +10,7 @@ from src.analysis.graph_metrics import load_graph_from_processed, calculate_cent
 
 st.set_page_config(
     page_title="Validação Neo4j - TADS/UFRN",
+    page_icon="docs/assets/favicon.ico",
     layout="wide"
 )
 

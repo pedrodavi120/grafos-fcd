@@ -49,9 +49,6 @@ env/
 .coverage
 htmlcov/
 
-# Static / temp
-favicon.ico
-
 # Generated figures / large exports if transient
 reports/figures/*.tmp
 
