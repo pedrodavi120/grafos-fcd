@@ -89,3 +89,4 @@ with tab3:
     with fig_col2:
         st.image(str(FIGURES_DIR / "grau_centralidade_distribuicao.png"), caption="Dispersão de Pré-Requisitos Exigidos vs Destravados")
     st.image(str(FIGURES_DIR / "topologia_dag_curricular.png"), caption="Topologia Estratificada por Semestre do Curso de TADS")
+
