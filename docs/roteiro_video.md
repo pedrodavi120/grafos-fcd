@@ -39,7 +39,7 @@
   > Os dados brutos das disciplinas e pré-requisitos residem em data/raw e são tratados e validados para a pasta data/processed.
   > No módulo loader.py, utilizamos o driver oficial do Neo4j com parâmetros de conexão parametrizados por variáveis de ambiente.
   > Ao executar o script, são aplicadas as restrições de unicidade no banco e realizada a carga em lote idempotente através das cláusulas UNWIND e MERGE do Cypher, impedindo a inserção de nós ou arestas duplicadas.
-  > Conforme exibido no terminal, 26 componentes e 27 relacionamentos foram consolidados com sucesso."
+  > Conforme exibido no terminal, 39 componentes curriculares e 36 relacionamentos de pré-requisito foram consolidados com sucesso."
 
 ### 01:45 - 03:00 | Validação Prática no Neo4j Browser
 * **Ambiente Visual:** Painel do Neo4j Browser conectado à instância ativa.
@@ -51,7 +51,7 @@
      (Demonstração da visualização gráfica com nós coloridos e arestas direcionadas).
   2. Consulta de múltiplos saltos a partir da disciplina de Algoritmos (análoga à questão da lista prática):
      ```cypher
-     MATCH path = (alg:Componente {codigo: 'TADS01'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo)
+     MATCH path = (alg:Componente {codigo: 'TAD0102'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo)
      RETURN path;
      ```
 * **Locução (Natanael Lucas):**
@@ -67,7 +67,7 @@
 * **Locução (Natanael Lucas):**
   > "Para a análise implícita dos dados, integramos o banco Neo4j à biblioteca NetworkX em Python.
   > O algoritmo confirmou matematicamente que a estrutura é um grafo direcionado acíclico, livre de ciclos temporais.
-  > O cálculo da centralidade de intermediação revelou que disciplinas como Desenvolvimento Web I e Projeto Integrador I são os maiores gargalos estruturais da formação, pois concentram o fluxo curricular até o TCC.
+  > O cálculo da centralidade de intermediação revelou que a própria disciplina de Fundamentos e Técnicas em Ciência de Dados (TAD0204) desponta como o principal nó articulador e gargalo de intermediação da rede (betweenness de 0.0128), seguida por Estruturas de Dados (TAD0020) e Projetos Aplicados I (TAD0156).
   > Além disso, o algoritmo de caminho mais longo em DAG estabeleceu que a cadeia crítica mínima de formatura exige 5 períodos letivos ininterruptos."
 
 ### 04:00 - 04:30 | Encerramento e Apresentação do Repositório

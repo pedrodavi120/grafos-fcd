@@ -51,7 +51,7 @@
   7. **Pipeline Analítico (Explícita vs. Implícita):** Conexão com o slide `ds06.pdf`: AED inicial (Pandas), Análise Explícita em Cypher (travessia até 3 saltos a partir de Algoritmos) e Análise Implícita em NetworkX.
   8. **A PoC e Resultados da Validação (Exibição do Vídeo / Telas):**
      - Em vez de rodar ao vivo, projetar o vídeo curto ou as telas do Neo4j Browser e as figuras analíticas já exportadas (`reports/figures/`).
-     - Explicar as métricas: gargalos de fluxo (*Betweenness Centrality*: Web I e Projeto Integrador I), provedores de pré-requisitos (*Out-Degree*: Algoritmos e Bancos de Dados) e o Caminho Crítico de 5 semestres.
+     - Explicar as métricas: gargalos de fluxo (*Betweenness Centrality*: Fundamentos e Técnicas em Ciência de Dados - TAD0204, Estruturas de Dados - TAD0020 e Projetos Aplicados I - TAD0156), provedores de pré-requisitos (*Out-Degree*: Algoritmos - TAD0102 e Banco de Dados - TAD0103) e o Caminho Crítico de 5 semestres.
      - Mencionar a interface PoC construída em Streamlit (`app.py`) como diferencial prático abordado nas aulas.
   9. **Conclusões e Encerramento:** Resumo dos aprendizados, link do repositório no GitHub (`https://github.com/pedrodavi120/grafos-fcd`) e abertura para a banca.
 

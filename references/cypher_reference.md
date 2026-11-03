@@ -9,7 +9,7 @@ Este documento compila as consultas declarativas em Cypher empregadas na valida�
 A linguagem Cypher adota uma notação visual inspirada em caracteres ASCII para expressar nós e relacionamentos:
 * `(n)`: Representa um **Nó** (*Node* / Vértice).
 * `(c:Componente)`: Representa um nó portador do rótulo (*Label*) `Componente`.
-* `(c:Componente {codigo: 'TADS01'})`: Nó com propriedades (*Properties*) específicas.
+* `(c:Componente {codigo: 'TAD0102'})`: Nó com propriedades (*Properties*) específicas.
 * `-->` ou `<--`: Representa um **Relacionamento Direcionado** (*Relationship* / Aresta).
 * `-[r:E_PRE_REQUISITO_DE]->`: Relacionamento tipado com identificador `r`.
 * `(origem)-[:E_PRE_REQUISITO_DE]->(destino)`: Padrão completo de travessia direcionada.
@@ -61,9 +61,9 @@ RETURN count(r) AS total_relacoes;
 ## 4. DQL: Consultas Analíticas (Explícitas e Múltiplos Saltos)
 
 ### 4.1 Consulta Direta (Equivalente à Questão 7.1 da Lista de Exercícios)
-*"Quais disciplinas possuem Algoritmos (TADS01) como pré-requisito direto?"*
+*"Quais disciplinas possuem Algoritmos e Programação (TAD0102) como pré-requisito direto?"*
 ```cypher
-MATCH (alg:Componente {codigo: 'TADS01'})-[:E_PRE_REQUISITO_DE]->(dep:Componente)
+MATCH (alg:Componente {codigo: 'TAD0102'})-[:E_PRE_REQUISITO_DE]->(dep:Componente)
 RETURN dep.codigo AS Codigo, dep.nome AS Nome, dep.semestre AS Semestre
 ORDER BY dep.semestre;
 ```
@@ -71,15 +71,15 @@ ORDER BY dep.semestre;
 ### 4.2 Travessia de Profundidade Arbitrária (*k-hop*)
 *"Quais são todas as disciplinas destravadas na cadeia de dependência até o 3º nível a partir de Algoritmos?"*
 ```cypher
-MATCH path = (alg:Componente {codigo: 'TADS01'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo:Componente)
+MATCH path = (alg:Componente {codigo: 'TAD0102'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo:Componente)
 RETURN alvo.codigo AS Codigo, alvo.nome AS Componente, length(path) AS DistanciaSaltos
 ORDER BY DistanciaSaltos, alvo.semestre;
 ```
 
 ### 4.3 Rastreabilidade Reversa (Ancestrais de Conclusão de Curso)
-*"Quais são todos os pré-requisitos diretos e indiretos para cursar o Projeto Integrador II (TADS25)?"*
+*"Quais são todos os pré-requisitos diretos e indiretos para cursar Projetos Aplicados II (TAD0157)?"*
 ```cypher
-MATCH path = (origem:Componente)-[:E_PRE_REQUISITO_DE*1..5]->(fim:Componente {codigo: 'TADS25'})
+MATCH path = (origem:Componente)-[:E_PRE_REQUISITO_DE*1..5]->(fim:Componente {codigo: 'TAD0157'})
 RETURN origem.codigo AS CodigoPreRequisito, origem.nome AS Disciplina, length(path) AS Nivel
 ORDER BY Nivel DESC;
 ```

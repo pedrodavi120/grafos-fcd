@@ -12,8 +12,8 @@ Representa uma unidade curricular formalmente ofertada na matriz pedagógica do 
 
 | Propriedade | Tipo de Dado Neo4j | Restrição / Índice | Descrição Semântica | Exemplo de Instância |
 |---|---|---|---|---|
-| `codigo` | String | **UNIQUE CONSTRAINT** | Código identificador alfanumérico unívoco da disciplina | `"TADS01"` |
-| `nome` | String | Indexado | Nome oficial do componente curricular | `"Algoritmos e Logica de Programacao"` |
+| `codigo` | String | **UNIQUE CONSTRAINT** | Código identificador alfanumérico unívoco da disciplina | `"TAD0102"` |
+| `nome` | String | Indexado | Nome oficial do componente curricular | `"ALGORITMOS E PROGRAMACAO"` |
 | `ch` | Integer | - | Carga horária total do componente (horas) | `90` |
 | `semestre` | Integer | **SECONDARY INDEX** | Período letivo sugerido para cursar (1 a 6) | `1` |
 | `natureza` | String | - | Categoria formativa: `"Obrigatoria"` ou `"Optativa"` | `"Obrigatoria"` |

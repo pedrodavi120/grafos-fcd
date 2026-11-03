@@ -36,8 +36,8 @@ class TestGraphMetrics(unittest.TestCase):
         self.assertIn("out_degree", df.columns)
 
         # TAD0102 (Algoritmos e Programacao) deve ser um dos maiores provedores de pre-requisitos
-        row_tads01 = df[df["codigo"] == "TAD0102"].iloc[0]
-        self.assertGreaterEqual(row_tads01["out_degree"], 3)
+        row_tad0102 = df[df["codigo"] == "TAD0102"].iloc[0]
+        self.assertGreaterEqual(row_tad0102["out_degree"], 3)
 
     def test_critical_path_detection(self):
         """Valida o cálculo do caminho crítico de formatura."""
