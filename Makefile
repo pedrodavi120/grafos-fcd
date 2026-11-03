@@ -1,4 +1,4 @@
-.PHONY: help setup data ingest metrics figures test clean
+.PHONY: help setup data ingest metrics figures app test clean
 
 help:
 	@echo "Comandos disponíveis:"
@@ -7,6 +7,7 @@ help:
 	@echo "  make ingest    - Executa a carga no Neo4j com UNWIND e MERGE"
 	@echo "  make metrics   - Calcula as centralidades e caminho crítico com NetworkX"
 	@echo "  make figures   - Gera e salva os gráficos analíticos em reports/figures"
+	@echo "  make app       - Inicia o dashboard interativo em Streamlit"
 	@echo "  make test      - Executa a suíte de testes automatizados"
 	@echo "  make clean     - Remove caches e arquivos temporários de compilação"
 
@@ -25,6 +26,9 @@ metrics:
 
 figures:
 	python src/visualization/plot_graph.py
+
+app:
+	streamlit run app.py
 
 test:
 	python -m unittest discover -s tests -p "test_*.py" -v
