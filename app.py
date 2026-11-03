@@ -69,7 +69,9 @@ with tab1:
         k_hops = get_k_hop_successors(G, codigo_sel, k=3)
         for salto, lista in k_hops.items():
             if lista:
-                st.write(f"• **Salto {salto}:** {', '.join([f'{c} ({G.nodes[c][\"nome\"]})' for c in lista])}")
+                itens_formatados = [f"{c} ({G.nodes[c].get('nome', c)})" for c in lista]
+                texto_salto = ", ".join(itens_formatados)
+                st.write(f"• **Salto {salto}:** {texto_salto}")
     except Exception as e:
         st.error(f"Erro no percurso: {e}")
 
