@@ -1,80 +1,85 @@
-# Guiao para Gravacao do Video Demonstrativo (Duracao: 3 a 5 Minutos)
+# Guião Técnico para Gravação do Vídeo Demonstrativo (3 a 5 Minutos)
 
-**Projeto:** Validacao Tecnologica de Bases de Dados em Grafos (Neo4j & Cypher)  
-**Unidade Curricular:** Fundamentos e Tecnicas em Ciencia de Dados - TADS / EAJ - UFRN  
-**Docente:** Prof. Josenalde Oliveira  
-**Responsavel pela Gravacao e Edicao:** Natanael Lucas  
-**Equipe:** Pedro Davi, Cleiton Mizael e Natanael Lucas
-
----
-
-## 1. Visao Geral da Gravacao
-* **Duracao Ideal:** Entre 3 minutos e 30 segundos e 4 minutos e 15 segundos (limite maximo de 5 minutos).
-* **Software Sugerido:** OBS Studio ou gravador de tela nativo do Windows (`Win + Alt + R`).
-* **Qualidade:** 1080p, audio claro, sem ruidos.
-* **Janelas a Capturar:** VS Code (terminal e codigo) e Navegador (Neo4j Browser / Jupyter Lab).
+**Projeto:** Validação Tecnológica de Bases de Dados em Grafos (Neo4j & Cypher)  
+**Unidade Curricular:** Fundamentos e Técnicas em Ciência de Dados  
+**Docente:** Prof. Dr. Josenalde Oliveira  
+**Curso:** Análise e Desenvolvimento de Sistemas (TADS) — EAJ / UFRN  
+**Responsável Técnico pela Gravação e Edição:** Natanael Lucas  
+**Equipe:** Pedro Davi, Cleiton Mizael e Natanael Lucas  
 
 ---
 
-## 2. Cronograma Minuto a Minuto
+## 1. Parâmetros de Produção Audiovisual
+* **Duração Recomendada:** Entre 3 minutos e 30 segundos e 4 minutos e 15 segundos (limite regulamentar máximo: 5 minutos).
+* **Software de Captura:** OBS Studio ou Gravador de Tela integrado do Windows (`Win + Alt + R`).
+* **Resolução:** 1080p (Full HD), áudio equalizado e sem ruídos ambientes.
+* **Ambientes de Gravação:** VS Code (código-fonte e terminal) e Navegador Web (Neo4j Browser e Jupyter Lab).
 
-### 00:00 - 00:45 | Introducao e Data Product Canvas
-* **Em Tela:** Slide de abertura com o titulo do trabalho, nomes da equipe e a imagem do Data Product Canvas.
-* **Audio:**
-  > "Ola professor Josenalde. Este e o video de demonstracao da nossa validacao tecnologica da Etapa 2, com foco em Bancos de Dados em Grafos utilizando Neo4j e a linguagem Cypher.
-  > Nosso objetivo foi modelar as disciplinas e a grade de pre-requisitos do curso de TADS da EAJ/UFRN para testar o desempenho e a expressividade de grafos frente ao modelo relacional e NoSQL documental.
-  > Estruturamos a solucao com base no Data Product Canvas, definindo requisitos tecnicos, proposta de valor e criterios de sucesso."
+---
 
-### 00:45 - 01:45 | Estrutura Cookiecutter e Ingestao de Dados
-* **Em Tela:** VS Code mostrando a estrutura de pastas (`data/`, `src/`, `notebooks/`, `Makefile`).
-* **Acao ao Vivo no Terminal:**
-  1. Mostrar o arquivo `data/raw/tads_disciplinas.csv`.
-  2. Executar o comando de carga:
+## 2. Roteiro Cronometrado Passo a Passo
+
+### 00:00 - 00:45 | Contextualização e Data Product Canvas
+* **Ambiente Visual:** Diapositivo inicial com os dados de identificação da equipe e exibição integral do *Data Product Canvas*.
+* **Locução (Natanael Lucas):**
+  > "Olá, professor Josenalde. Este é o vídeo demonstrativo da nossa validação tecnológica referente à Etapa 2 da disciplina de Fundamentos e Técnicas em Ciência de Dados, cujo tema é Bancos de Dados Baseados em Grafos, com foco no Neo4j e na linguagem Cypher.
+  > Nosso objetivo prático foi modelar a matriz curricular e as dependências de pré-requisitos do curso de TADS da EAJ/UFRN para comprovar o ganho de eficiência em percursos relacionais densos frente aos modelos relacionais tradicionais e documentais.
+  > Todo o planejamento técnico seguiu a estrutura formal do Data Product Canvas, que define claramente as fontes, os usuários, a proposta de valor e as métricas de sucesso."
+
+### 00:45 - 01:45 | Arquitetura Cookiecutter e Ingestão de Dados
+* **Ambiente Visual:** VS Code evidenciando a hierarquia de diretórios do padrão *Cookiecutter Data Science* (`data/`, `src/`, `notebooks/`, `Makefile`).
+* **Execução em Terminal:**
+  1. Apresentação do arquivo `data/raw/tads_disciplinas.csv`.
+  2. Execução do script de carga:
      ```bash
      python src/graph/loader.py
      ```
-* **Audio:**
-  > "O projeto foi estruturado seguindo o padrao Cookiecutter Data Science.
-  > Os dados curriculares brutos ficam em data/raw e sao saneados para data/processed.
-  > O script loader.py se conecta ao Neo4j atraves do driver oficial e executa comandos Cypher utilizando UNWIND e MERGE, o que garante atomicidade e idempotencia sem duplicar registros.
-  > Como vemos na saida do terminal, foram carregados 26 componentes e 27 relacionamentos de pre-requisito."
+* **Locução (Natanael Lucas):**
+  > "A arquitetura do projeto segue rigorosamente o padrão Cookiecutter Data Science.
+  > Os dados brutos das disciplinas e pré-requisitos residem em data/raw e são tratados e validados para a pasta data/processed.
+  > No módulo loader.py, utilizamos o driver oficial do Neo4j com parâmetros de conexão parametrizados por variáveis de ambiente.
+  > Ao executar o script, são aplicadas as restrições de unicidade no banco e realizada a carga em lote idempotente através das cláusulas UNWIND e MERGE do Cypher, impedindo a inserção de nós ou arestas duplicadas.
+  > Conforme exibido no terminal, 26 componentes e 27 relacionamentos foram consolidados com sucesso."
 
-### 01:45 - 03:00 | Demonstracao no Neo4j Browser (Cypher)
-* **Em Tela:** Neo4j Browser conectado ao banco.
-* **Acoes ao Vivo:**
-  1. Executar a visualizacao geral:
+### 01:45 - 03:00 | Validação Prática no Neo4j Browser
+* **Ambiente Visual:** Painel do Neo4j Browser conectado à instância ativa.
+* **Execução ao Vivo:**
+  1. Consulta geral da topologia:
      ```cypher
      MATCH (n:Componente) RETURN n LIMIT 25;
      ```
-     (Exibir a rede de vertices e arestas direcionadas).
-  2. Executar a consulta de pre-requisitos diretos e indiretos (analoga ao exercicio da lista):
+     (Demonstração da visualização gráfica com nós coloridos e arestas direcionadas).
+  2. Consulta de múltiplos saltos a partir da disciplina de Algoritmos (análoga à questão da lista prática):
      ```cypher
      MATCH path = (alg:Componente {codigo: 'TADS01'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo)
      RETURN path;
      ```
-* **Audio:**
-  > "No Neo4j Browser, podemos ver a topologia visual do grafo. Cada no e uma disciplina e cada aresta direcionada indica a relacao E_PRE_REQUISITO_DE.
-  > Aqui executamos uma consulta que busca todas as disciplinas destravadas a partir de Algoritmos em ate 3 saltos.
-  > Graças a Adjacencia Livre de Indices do Neo4j, essa busca ocorre por ponteiros diretos de memoria em poucos milissegundos, sem precisar de joins aninhados ou recursao em SQL."
+* **Locução (Natanael Lucas):**
+  > "No ambiente do Neo4j Browser, observamos a topologia do grafo. Cada nó representa um componente curricular e cada aresta direcionada expressa a relação E_PRE_REQUISITO_DE.
+  > Ao executarmos a consulta de travessia profunda partindo de Algoritmos e Lógica de Programação, recuperamos instantaneamente todas as disciplinas destravadas em até 3 saltos de dependência.
+  > Graças à Adjacência Livre de Índices do Neo4j, o custo dessa busca é resolvido diretamente por ponteiros de memória em milissegundos, sem requerer múltiplos JOINs sucessivos ou recursão analítica pesada."
 
-### 03:00 - 04:00 | Metricas de Teoria dos Grafos (NetworkX)
-* **Em Tela:** Jupyter Lab ou terminal executando `python src/analysis/graph_metrics.py`.
-* **Acoes ao Vivo:**
-  1. Mostrar o ranking de Betweenness Centrality e o Caminho Critico.
-  2. Exibir brevemente as figuras salvas em `reports/figures/`.
-* **Audio:**
-  > "Para a analise implicita dos dados, integramos o Neo4j com o NetworkX em Python.
-  > O algoritmo comprovou que o grafo e um DAG valido e identificou que Desenvolvimento Web I e Projeto Integrador I sao os maiores gargalos curriculares por terem a maior centralidade de intermediacao.
-  > Alem disso, o caminho critico de formatura exige 5 periodos consecutivos sem retencao."
+### 03:00 - 04:00 | Análise com NetworkX e Métricas Topológicas
+* **Ambiente Visual:** Terminal ou Jupyter Lab executando o módulo `src/analysis/graph_metrics.py`.
+* **Execução ao Vivo:**
+  1. Exibição da validação de DAG e da tabela de *Betweenness Centrality*.
+  2. Apresentação visual rápida das figuras geradas em `reports/figures/`.
+* **Locução (Natanael Lucas):**
+  > "Para a análise implícita dos dados, integramos o banco Neo4j à biblioteca NetworkX em Python.
+  > O algoritmo confirmou matematicamente que a estrutura é um grafo direcionado acíclico, livre de ciclos temporais.
+  > O cálculo da centralidade de intermediação revelou que disciplinas como Desenvolvimento Web I e Projeto Integrador I são os maiores gargalos estruturais da formação, pois concentram o fluxo curricular até o TCC.
+  > Além disso, o algoritmo de caminho mais longo em DAG estabeleceu que a cadeia crítica mínima de formatura exige 5 períodos letivos ininterruptos."
 
-### 04:00 - 04:30 | Encerramento
-* **Em Tela:** Pagina do repositorio no GitHub com os testes passando.
-* **Audio:**
-  > "O repositorio completo com codigo modular, testes unitarios e notebooks esta disponivel no GitHub. Concluimos assim a validacao tecnologica com sucesso. Muito obrigado."
+### 04:00 - 04:30 | Encerramento e Apresentação do Repositório
+* **Ambiente Visual:** Página inicial do repositório no GitHub (`https://github.com/pedrodavi120/grafos-fcd`), com destaque para a suíte de testes passando com 100% de sucesso.
+* **Locução (Natanael Lucas):**
+  > "O repositório completo com a documentação do projeto, cadernos Jupyter e a suíte de testes automatizados está acessível publicamente no GitHub.
+  > Concluímos, portanto, que a validação comprovou a eficiência e a expressividade do modelo de grafos para dados pedagógicos e relacionais complexos. Muito obrigado."
 
 ---
 
-## 3. Checklist Tecnico
-* [ ] Conexao com Neo4j testada antes de iniciar a gravacao.
-* [ ] Fonte do terminal aumentada para permitir boa leitura no video.
-* [ ] Terminal limpo (`cls` ou `clear`) antes de rodar os comandos.
+## 3. Lista de Verificação Prévia à Gravação
+* [ ] Instância local do Neo4j ou conexão com o Neo4j AuraDB testada e operacional.
+* [ ] Resolução e escala do terminal configuradas com fonte legível (tamanho 16 ou superior).
+* [ ] Janela do navegador com o Neo4j Browser configurada com contraste adequado e zoom em 110%.
+* [ ] Limpeza prévia do histórico do terminal para uma apresentação nítida.

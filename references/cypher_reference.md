@@ -1,18 +1,18 @@
 # Guia de Referência: Cypher Query Language (Neo4j)
 
-Este documento compila as consultas Cypher fundamentais empregadas na validação tecnológica do **GraphCurriculum-FCD**, correlacionando a sintaxe de grafos com as linguagens relacionais (SQL) e documentais (MongoDB MQL).
+Este documento compila as consultas declarativas em Cypher empregadas na validação tecnológica do **GraphCurriculum-FCD**, correlacionando a sintaxe de grafos com os paradigmas relacional (SQL) e documental (MongoDB MQL).
 
 ---
 
 ## 1. Fundamentos da Sintaxe Declarativa Cypher
 
-A linguagem Cypher utiliza a notação visual em *ASCII-Art* para expressar nós e arestas:
-- `(n)`: Representa um **Nó** (*Node* / Vértice).
-- `(c:Componente)`: Representa um nó com o rótulo (*Label*) `Componente`.
-- `(c:Componente {codigo: 'TADS01'})`: Nó com propriedades (*Properties*) específicas.
-- `-->` ou `<--`: Representa um **Relacionamento Direcionado** (*Relationship* / Aresta).
-- `-[r:E_PRE_REQUISITO_DE]->`: Relacionamento tipado.
-- `(origem)-[:E_PRE_REQUISITO_DE]->(destino)`: Padrão completo de conexão.
+A linguagem Cypher adota uma notação visual inspirada em caracteres ASCII para expressar nós e relacionamentos:
+* `(n)`: Representa um **Nó** (*Node* / Vértice).
+* `(c:Componente)`: Representa um nó portador do rótulo (*Label*) `Componente`.
+* `(c:Componente {codigo: 'TADS01'})`: Nó com propriedades (*Properties*) específicas.
+* `-->` ou `<--`: Representa um **Relacionamento Direcionado** (*Relationship* / Aresta).
+* `-[r:E_PRE_REQUISITO_DE]->`: Relacionamento tipado com identificador `r`.
+* `(origem)-[:E_PRE_REQUISITO_DE]->(destino)`: Padrão completo de travessia direcionada.
 
 ---
 
@@ -25,7 +25,7 @@ FOR (c:Componente)
 REQUIRE c.codigo IS UNIQUE;
 ```
 
-### Índice de Propriedade (Otimiza busca por nome e período)
+### Índice Secundário (Otimiza filtros por período letivo)
 ```cypher
 CREATE INDEX idx_componente_semestre IF NOT EXISTS
 FOR (c:Componente)
@@ -36,7 +36,7 @@ ON (c.semestre);
 
 ## 3. DML: Ingestão em Lote Idempotente
 
-### Inserção de Nós com `UNWIND` + `MERGE`
+### Inserção Atômica de Nós com `UNWIND` + `MERGE`
 ```cypher
 UNWIND $batch AS comp
 MERGE (c:Componente {codigo: comp.codigo})
@@ -47,7 +47,7 @@ SET c.nome = comp.nome,
     c.area = comp.area;
 ```
 
-### Inserção de Arestas com `UNWIND` + `MERGE`
+### Inserção Atômica de Arestas com `UNWIND` + `MERGE`
 ```cypher
 UNWIND $relacoes AS rel
 MATCH (origem:Componente {codigo: rel.codigo_origem})
@@ -69,7 +69,7 @@ ORDER BY dep.semestre;
 ```
 
 ### 4.2 Travessia de Profundidade Arbitrária (*k-hop*)
-*"Quais são todas as disciplinas liberadas na cadeia de dependência até 3 saltos a partir de Algoritmos?"*
+*"Quais são todas as disciplinas destravadas na cadeia de dependência até o 3º nível a partir de Algoritmos?"*
 ```cypher
 MATCH path = (alg:Componente {codigo: 'TADS01'})-[:E_PRE_REQUISITO_DE*1..3]->(alvo:Componente)
 RETURN alvo.codigo AS Codigo, alvo.nome AS Componente, length(path) AS DistanciaSaltos
@@ -100,10 +100,9 @@ ORDER BY DisciplinasQueDestrava DESC;
 
 ## 5. Comparativo Arquitetural: Cypher vs. SQL vs. MongoDB
 
-| Operação | SQL Relacional | MongoDB (MQL) | Neo4j (Cypher) |
+| Critério Analítico | SQL Relacional (SGBD-R) | MongoDB (MQL Documental) | Neo4j (Cypher em Grafos) |
 |---|---|---|---|
-| **Busca 1 salto** | `JOIN` entre tabelas com chave estrangeira | `$lookup` ou `$in` em array | `(a)-[:REL]->(b)` |
-| **Busca N saltos** | `WITH RECURSIVE` (custoso, complexo) | Impraticável em escala sem ETL prévio | `(a)-[:REL*1..N]->(b)` |
-| **Index-Free Adjacency** | Não (usa B-Tree lookups a cada join) | Não (usa índices de chave) | Sim (ponteiros diretos de memória) |
-| **Complexidade de Tempo** | $O(N \log M)$ por nível de junção | $O(N)$ em coleções não normalizadas | $O(1)$ por salto percorrido |
-
+| **Busca em 1 salto** | Junção `JOIN` com chaves estrangeiras | Operadores `$lookup` ou `$in` em vetores | `(a)-[:REL]->(b)` |
+| **Busca em N saltos** | `WITH RECURSIVE` (complexa e onerosa) | Inviável em escala sem ETL prévio | `(a)-[:REL*1..N]->(b)` |
+| **Index-Free Adjacency** | Inexistente (varreduras em índices a cada junção) | Inexistente (varreduras em índices de coleção) | Nativa (ponteiros diretos de memória física) |
+| **Complexidade Temporal** | $O(N \log M)$ por nível de junção | $O(N)$ em coleções não normalizadas | $O(1)$ por salto percorrido |

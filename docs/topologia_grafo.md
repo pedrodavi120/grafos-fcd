@@ -1,6 +1,6 @@
-# Especificação da Topologia do Grafo: Labeled Property Graph (LPG)
+# Especificação Formal da Topologia do Grafo: Labeled Property Graph (LPG)
 
-Especificação técnica do modelo de dados em grafos utilizado no projeto **GraphCurriculum-FCD**.
+Documento técnico que formaliza a modelagem de dados da validação tecnológica **GraphCurriculum-FCD**, em conformidade com as diretrizes da disciplina de **Fundamentos e Técnicas em Ciência de Dados** (TADS / EAJ — UFRN).
 
 ---
 
@@ -8,36 +8,35 @@ Especificação técnica do modelo de dados em grafos utilizado no projeto **Gra
 
 ### Rótulo (*Label*): `:Componente`
 
-Representa uma unidade curricular ofertada na matriz pedagógica de TADS / EAJ - UFRN.
+Representa uma unidade curricular formalmente ofertada na matriz pedagógica do curso de Tecnologia em Análise e Desenvolvimento de Sistemas (TADS / EAJ — UFRN).
 
-| Propriedade | Tipo Neo4j | Restrição / Índice | Descrição | Exemplo |
+| Propriedade | Tipo de Dado Neo4j | Restrição / Índice | Descrição Semântica | Exemplo de Instância |
 |---|---|---|---|---|
-| `codigo` | String | **UNIQUE CONSTRAINT** | Código identificador único do componente | `"TADS01"` |
-| `nome` | String | Indexado | Nome oficial da disciplina | `"Algoritmos e Logica de Programacao"` |
-| `ch` | Integer | - | Carga horária total em horas | `90` |
-| `semestre` | Integer | **INDEX** | Período letivo sugerido (1 a 6) | `1` |
-| `natureza` | String | - | `"Obrigatoria"` ou `"Optativa"` | `"Obrigatoria"` |
-| `area` | String | - | Área do conhecimento | `"Programacao"`, `"Dados"`, `"Engenharia"` |
+| `codigo` | String | **UNIQUE CONSTRAINT** | Código identificador alfanumérico unívoco da disciplina | `"TADS01"` |
+| `nome` | String | Indexado | Nome oficial do componente curricular | `"Algoritmos e Logica de Programacao"` |
+| `ch` | Integer | - | Carga horária total do componente (horas) | `90` |
+| `semestre` | Integer | **SECONDARY INDEX** | Período letivo sugerido para cursar (1 a 6) | `1` |
+| `natureza` | String | - | Categoria formativa: `"Obrigatoria"` ou `"Optativa"` | `"Obrigatoria"` |
+| `area` | String | - | Eixo formativo ou área temática de concentração | `"Programacao"`, `"Dados"`, `"Engenharia"` |
 
 ---
 
-## 2. Arestas (Relationships / Arestas Direcionadas)
+## 2. Relacionamentos (Relationships / Arestas Direcionadas)
 
-### Tipo: `[:E_PRE_REQUISITO_DE]`
+### Rótulo do Tipo: `[:E_PRE_REQUISITO_DE]`
 
-Estabelece a dependência pedagógica direta entre dois componentes curriculares.
+Formaliza a dependência pedagógica direta existente entre dois componentes curriculares.
 
-* **Direção:** `(origem:Componente)-[:E_PRE_REQUISITO_DE]->(destino:Componente)`
-* **Semântica:** O componente `origem` deve ser cursado e aprovado com sucesso antes de o aluno matricular-se no componente `destino`.
-* **Propriedades:**
-  - `tipo`: String (padrão `"E_PRE_REQUISITO_DE"`).
+* **Assinatura Direcionada:** `(origem:Componente)-[:E_PRE_REQUISITO_DE]->(destino:Componente)`
+* **Semântica:** O componente `origem` deve ser obrigatoriamente cursado e concluído com aprovação antes que o estudante possa realizar matrícula no componente `destino`.
+* **Propriedades da Aresta:**
+  - `tipo`: String (armazenada com o valor constante `"E_PRE_REQUISITO_DE"` para consultas parametrizadas).
 
 ---
 
-## 3. Propriedades Estruturais da Topologia
+## 3. Propriedades Estruturais e Teoria de Grafos
 
-* **Natureza da Rede:** Grafo Direcionado Acíclico (DAG - *Directed Acyclic Graph*).
-* **Ausência de Ciclos:** Rigorosamente comprovada matematicamente via `nx.is_directed_acyclic_graph(G) == True`.
-* **Densidade de Arestas:** Proporção moderada, refletindo a estrutura de dependências do curso superior.
-* **Componentes Conexos:** O grafo é conexo na sua grande maioria através de Algoritmos (TADS01), com pequenos subgrafos isolados para disciplinas instrumentais (ex.: Metodologia e Governança).
-
+* **Classificação Formal:** Grafo Direcionado Acíclico (DAG — *Directed Acyclic Graph*), denotado por $G = (V, E)$, no qual $V$ corresponde ao conjunto finito de disciplinas e $E \subseteq V \times V$ ao conjunto de pré-requisitos direcionados.
+* **Verificação de Aciclicidade:** O grafo foi formalmente validado contra a presença de ciclos temporais ou inconsistências circulares mediante o algoritmo de ordenação topológica da biblioteca `NetworkX`:
+  $$\text{nx.is\_directed\_acyclic\_graph}(G) = \text{True}$$
+* **Adjacência Livre de Índices (*Index-Free Adjacency*):** Cada nó componente mantém referências diretas em memória física para seus vizinhos de entrada e de saída. O percurso de um salto arbitrário apresenta custo computacional de tempo constante $O(1)$, conferindo ao Neo4j superioridade teórica e prática frente a junções relacionais indexadas por árvores B-Tree ($O(N \log M)$ por nível de junção).
